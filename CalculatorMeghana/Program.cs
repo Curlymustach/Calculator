@@ -14,7 +14,7 @@ namespace CalculatorMeghana
             Stack<string> operations = new Stack<string>();
 
             Console.WriteLine("CALCULATOR");
-            Console.WriteLine("Instrutions:\n 1. Enter number, operation \n 2. Keep spaces in between numbers and operations 3. click enter when done with operation");
+            Console.WriteLine("Instructions:\n 1. Enter number, operation \n 2. Keep spaces in between numbers and operations 3. hit enter when done with operation");
 
             string input = Console.ReadLine();
             string[] inputs = input.Split(' ');
