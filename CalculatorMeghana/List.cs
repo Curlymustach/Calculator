@@ -75,6 +75,7 @@ namespace CalculatorMeghana
 
             nodeBefore.Next.Prev = temp;
             nodeBefore.Next = temp;
+            count++;
             //if (nodeBefore.Next != null)
             //{
             //    temp = new Node<T>(value, nodeBefore.Next, nodeBefore);
@@ -101,7 +102,7 @@ namespace CalculatorMeghana
 
             nodeAfter.Prev.Next = temp;
             nodeAfter.Prev = temp;
-
+            count++;
             //if (nodeAfter.Prev != null)
             //{
             //    Node<T> temp = new Node<T>(value, nodeAfter, nodeAfter.Prev);
@@ -118,24 +119,26 @@ namespace CalculatorMeghana
         }
 
 
-        public void Remove(int index)
+        public void RemoveAt(int index)
         {
             Remove(Find(index));
         }
 
         public void Remove(Node<T> node)
         {
+            count--;
             if (node.Prev == head && node.Next == head)
             {
-                if (node == tail)
+                if (node == head)
+                {
+                    head = null;
+                    tail = null;
+                }
+                else if (node == tail)
                 {
                     node.Prev.Next = node.Next;
                     node.Next.Prev = node.Prev;
-                    tail = tail.Next;
-                }
-                else
-                {
-                    head = null;
+                    tail = node.Next;
                 }
             }
             else if (node == head)
@@ -143,6 +146,12 @@ namespace CalculatorMeghana
                 node.Prev.Next = node.Next;
                 node.Next.Prev = node.Prev;
                 head = head.Next;
+            }
+            else if (node == tail)
+            {
+                node.Prev.Next = node.Next;
+                node.Next.Prev = node.Prev;
+                tail = tail.Prev;
             }
             else
             {
